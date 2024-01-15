@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Học Tiếng Nhật - Kiểm tra Kanji</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/mdui.min.css" />
+    <link rel="stylesheet" href="./css/quiz.css" />
+</head>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-drawer-body-left mdui-appbar-with-toolbar">
+  <div id="kajitest1">
+      <header class="mdui-appbar mdui-appbar-fixed">
+          <div class="mdui-toolbar mdui-color-theme">
+              <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer',swipe: true}"><i
+                      class="mdui-icon material-icons">menu</i></a>
+              <a href="javascript:;" class="mdui-typo-headline mdui-hidden-xs">Học Tiếng Nhật</a>
+              <a href="javascript:;" class="mdui-typo-title">Kiểm Tra Kanji</a>
+          </div>
+      </header>
+      <div class="mdui-drawer" id="drawer">
+          <ul class="mdui-list" mdui-collapse="{accordion: true}">
+              <a href="index.html" class="mdui-list-item mdui-ripple">
+
+                  <span style="font-size:24px" class="mdui-list-item-icon">あ</span>
+                  <div class="mdui-list-item-content">Hiragana</div>
+              </a>
+              <a href="katakana.html" class="mdui-list-item mdui-ripple">
+
+                  <span style="font-size:24px" class="mdui-list-item-icon">ア</span>
+                  <div class="mdui-list-item-content">Katakana</div>
+              </a>
+              <a href="80_kanji.html" class="mdui-list-item mdui-ripple">
+                  <i class="mdui-list-item-icon mdui-icon material-icons">日</i>
+                  <div class="mdui-list-item-content">Kanji</div>
+              </a>
+              <a href="vocab.html" class="mdui-list-item mdui-ripple">
+                  <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+                  <div class="mdui-list-item-content">Từ Vựng</div>
+              </a>
+              <!--<a href="grammar.html" class="mdui-list-item mdui-ripple">
+                      <i class="mdui-list-item-icon mdui-icon material-icons">school</i>
+                      <div class="mdui-list-item-content">Ngữ Pháp</div>
+                  </a>  -->
+              <a href="test.html" class="mdui-list-item mdui-ripple">
+                  <i class="mdui-list-item-icon mdui-icon material-icons">check</i>
+                  <div class="mdui-list-item-content">Ôn Tập Kiến Thức</div>
+              </a>
+              <a href="kanjitest.html" class="mdui-list-item mdui-ripple">
+                  <i class="mdui-list-item-icon mdui-icon material-icons">work</i>
+                  <div class="mdui-list-item-content">Kiểm Tra Kanji</div>
+              </a>
+          </ul>
+      </div>
+      <main id="kanji-page" class="mdui-container">
+        <div class="mdui-typo-headline title">Kiểm tra Kanji</div>
+        <div id="quiz-container">
+            <p><h3>Chuyển đổi Kanji thành Hiragana hoặc Hiragana thành Kanji</h3></p>
+        </div>
+        <div>
+            <button class="submit-button" onclick="submitAnswers()" ><b>Nộp Bài</b></button>
+            <span id="result-container"></span>
+        </div>
+        
+        
+      </main>
+  </div>
+  <script src="./js/main.js"></script>  
+  <script src="./js/kanjitest.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Học Tiếng Nhật - Từ Vựng</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/mdui.min.css" />
+</head>
+
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-drawer-body-left mdui-appbar-with-toolbar">
+    <div id="test">
+        <header class="mdui-appbar mdui-appbar-fixed">
+            <div class="mdui-toolbar mdui-color-theme">
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer',swipe: true}"><i
+                        class="mdui-icon material-icons">menu</i></a>
+                <a href="javascript:;" class="mdui-typo-headline mdui-hidden-xs">Học Tiếng Nhật</a>
+                <a href="javascript:;" class="mdui-typo-title">Từ Vựng: Học Tập</a>
+                <div class="mdui-toolbar-spacer"></div>
+            </div>
+        </header>
+        <div class="mdui-drawer" id="drawer">
+            <ul class="mdui-list" mdui-collapse="{accordion: true}">
+                <a href="index.html" class="mdui-list-item mdui-ripple">
+                    <span style="font-size:24px" class="mdui-list-item-icon">あ</span>
+                    <div class="mdui-list-item-content">Hiragana</div>
+                </a>
+                <a href="katakana.html" class="mdui-list-item mdui-ripple">
+                    <span style="font-size:24px" class="mdui-list-item-icon">ア</span>
+                    <div class="mdui-list-item-content">Katakana</div>
+                </a>
+                <a href="80_kanji.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">日</i>
+                    <div class="mdui-list-item-content">Kanji</div>
+                </a>
+                <a href="vocab.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+                    <div class="mdui-list-item-content">Từ Vựng</div>
+                </a>
+                <!--<a href="grammar.html" class="mdui-list-item mdui-ripple">
+                        <i class="mdui-list-item-icon mdui-icon material-icons">school</i>
+                        <div class="mdui-list-item-content">Ngữ Pháp</div>
+                    </a>  -->
+                <a href="test.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">check</i>
+                    <div class="mdui-list-item-content">Ôn Tập Kiến Thức</div>
+                </a>
+                <a href="kanjitest.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">work</i>
+                    <div class="mdui-list-item-content">Kiểm Tra Kanji</div>
+                </a>
+            </ul>
+        </div>
+        <main id="home-page" class="mdui-container">
+            <div class="mdui-table">
+                <table id="vocab" class="mdui-table">
+                    <tbody>
+                        <tr>
+                            <td class="mdui-color-blue"><strong>STT</strong></td>
+                            <td class="mdui-color-blue"><strong>Từ vựng</strong></td>
+                            <td class="mdui-color-blue"><strong>Ví dụ</strong></td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>1</td>
+                            <td>先生
+                                <br>せんせい
+                                <br>Thầy, cô, giáo viên
+                            </td>
+                            <td><ruby><rb>山田</rb><rp>(</rp><rt>やまだ</rt><rp>)</rp></ruby>さんはにほんご<ruby><rb>学校</rb><rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>の<ruby><rb>先生</rb><rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>です.
+                                <br>Ông / Bà Yamada là giáo viên trường tiếng Nhật.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>2</td>
+                            <td>学生
+                                <br>がくせい
+                                <br>Học sinh, sinh viên
+                            </td>
+                            <td>おとうとは<ruby><rb>学生</rb><rp>(</rp><rt>がくせい</rt><rp>)</rp></ruby>です。
+                                <br>Em trai tôi là sinh viên.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>3</td>
+                            <td>りゅうがくせい
+                                <br>Du học sinh
+                            </td>
+                            <td>ヒエンさんはベトナムのりゅうがくせいです。
+                                <br>Chị Hiền là du học sinh Việt Nam.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>4</td>
+                            <td>学校
+                                <br>がっこう
+                                <br>Trường học
+                            </td>
+                            <td><ruby><rb>学校</rb><rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>は<ruby><rb>日本</rb><rp>(</rp><rt>にほん</rt><rp>)</rp></ruby>にあります。
+                                <br>Trường học ở Nhật Bản.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>5</td>
+                            <td>べんきょうくする
+                                <br>Học, học tập
+                            </td>
+                            <td>にほんごをべんきょうします。
+                                <br>Tôi sẽ học tiếng Nhật.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>6</td>
+                            <td>にほんご学校
+                                <br>にほんごがっこう
+                                <br>Trường dạy tiếng Nhật, trường Nhật ngữ
+                            </td>
+                            <td>ヒエンさんはにほんご<ruby><rb>学校</rb><rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>の<ruby><rb>学生</rb><rp>(</rp><rt>がくせい</rt><rp>)</rp></ruby>です。
+                                <br>Chị Hiền là sinh viên trường Nhật ngữ.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>7</td>
+                            <td>小学校
+                                <br>しょうがっこう
+                                <br>Trường tiểu học
+                            </td>
+                            <td>アリさんは<ruby><rb>小学校</rb><rp>(</rp><rt>しょうがっこう</rt><rp>)</rp></ruby>の<ruby><rb>先生</rb><rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>です。
+                                <br>Ông / Bà Ali là giáo viên trường tiểu học.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>8</td>
+                            <td>中学校
+                                <br>ちゅうがっこう
+                                <br>Trường cấp 2, trường trung học cơ sở
+                            </td>
+                            <td>トムさんは<ruby><rb>中学校</rb><rp>(</rp><rt>ちゅうがっこう</rt><rp>)</rp></ruby>の<ruby><rb>先生</rb><rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>です。
+                                <br>Anh Tom là giáo viên trường trung học cơ sở.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>9</td>
+                            <td>高校
+                                <br>こうこう
+                                <br>Trường cấp 3, trường trung học phổ thông
+                            </td>
+                            <td>アメリカの<ruby><rb>高校</rb><rp>(</rp><rt>こうこう</rt><rp>)</rp></ruby>でべんきょうします。
+                                <br>Tôi sẽ học tại trường phổ thông trung học của Mỹ.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>10</td>
+                            <td>大学
+                                <br>だいがく
+                                <br>Đại học
+                            </td>
+                            <td>スミスさんは<ruby><rb>大学</rb><rp>(</rp><rt>だいがく</rt><rp>)</rp></ruby>の<ruby><rb>先生</rb><rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>です。
+                                <br>Anh Smith là giáo viên đại học.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>11</td>
+                            <td>きょうしつ
+                                <br>Phòng học, lớp học
+                            </td>
+                            <td><ruby><rb>先生</rb><rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>はきょうしつにいます。
+                                <br>Thầy / cô ở lớp học.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>12</td>
+                            <td>クラス
+                                <br>Lớp
+                            </td>
+                            <td>クラスにりゅうがくせいがいます。
+                                <br>Trong lớp có du học sinh.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>13</td>
+                            <td>行く
+                                <br>Đi
+                            </td>
+                            <td><ruby><rb>学校</rb><rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>へ<ruby><rb>行</rb><rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。
+                                <br>Tôi đi học.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>14</td>
+                            <td>来る
+                                <br>くる
+                                <br>Đến
+                            </td>
+                            <td><ruby><rb>先生</rb><rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>がうちへ<ruby><rb>来</rb><rp>(</rp><rt>き</rt><rp>)</rp></ruby>ます。
+                                <br>Giáo viên sẽ đến nhà.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>15</td>
+                            <td>帰る
+                                <br>かえる
+                                <br>Về
+                            </td>
+                            <td>うちへ<ruby><rb>帰</rb><rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>ります。
+                                <br>Tôi về nhà.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>16</td>
+                            <td>いち
+                                <br>Một
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>17</td>
+                            <td>に
+                                <br>Hai
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>18</td>
+                            <td>さん
+                                <br>Ba
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>19</td>
+                            <td>し /よん
+                                <br>Bốn
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>20</td>
+                            <td>ご
+                                <br>Năm
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>21</td>
+                            <td>ろく
+                                <br>Sáu
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>22</td>
+                            <td>しち/なな
+                                <br>Bảy
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>23</td>
+                            <td>はち
+                                <br>Tám
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>24</td>
+                            <td>く /きゅう
+                                <br>Chín
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>25</td>
+                            <td>じゅう
+                                <br>Mười
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>26</td>
+                            <td>じゅういち
+                                <br>Mười một
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>27</td>
+                            <td>じゅうに
+                                <br>Mười hai
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>28</td>
+                            <td>〜月
+                                <br>がつ
+                                <br>Tháng
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>29</td>
+                            <td>1月
+                                <br>いちがつ
+                                <br>Tháng một, tháng Giêng
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>30</td>
+                            <td>2月
+                                <br>にがつ
+                                <br>Tháng Hai
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>31</td>
+                            <td>3月
+                                <br>さんがつ
+                                <br>Tháng Ba
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>32</td>
+                            <td>4月
+                                <br>しがつ
+                                <br>Tháng Tư
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>33</td>
+                            <td>5月
+                                <br>ごがつ
+                                <br>Tháng Năm
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>34</td>
+                            <td>6月
+                                <br>ろくがつ
+                                <br>Tháng Sáu
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>35</td>
+                            <td>7月
+                                <br>しちがつ
+                                <br>Tháng Bảy
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>36</td>
+                            <td>8月
+                                <br>はちがつ
+                                <br>Tháng Tám
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>37</td>
+                            <td>9月
+                                <br>くがつ
+                                <br>Tháng Chín
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>38</td>
+                            <td>10月
+                                <br>じゅうがつ
+                                <br>Tháng Mười
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>39</td>
+                            <td>11月
+                                <br>じゅういちがつ
+                                <br>Tháng Mười Một
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>40</td>
+                            <td>12月
+                                <br>Tháng Mười Hai, tháng Chạp
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>41</td>
+                            <td>何月
+                                <br>なんがつ
+                                <br>Tháng mấy?
+                            </td>
+                            <td>A:「<ruby><rb>何月</rb><rp>(</rp><rt>なんがつ</rt><rp>)</rp></ruby>ですか。」
+                                <br>A: Tháng mấy ?
+                                <br>B:「<ruby><rb>5月</rb><rp>(</rp><rt>ごがつ</rt><rp>)</rp></ruby>です。」
+                                <br>B : Tháng 5.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>42</td>
+                            <td>日よう日
+                                <br>にちようび
+                                <br>Chủ nhật
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>43</td>
+                            <td>月よう日
+                                <br>げつようび
+                                <br>Thứ Hai
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>44</td>
+                            <td>火よう日
+                                <br>かようび
+                                <br>Thứ Ba
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>45</td>
+                            <td>水よう日
+                                <br>すいようび
+                                <br>Thứ Tư
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>46</td>
+                            <td>木よう日
+                                <br>もくようび
+                                <br>Thứ Năm
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>47</td>
+                            <td>金よう日
+                                <br>きんようび
+                                <br>Thứ Sáu
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>48</td>
+                            <td>土よう日
+                                <br>どようび
+                                <br>Thứ Bảy
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>49</td>
+                            <td>何よう日
+                                <br>なんようび
+                                <br>Thứ mấy?
+                            </td>
+                            <td>A:「あしたは<ruby><rb>何</rb><rp>(</rp><rt>なん</rt><rp>)</rp></ruby>よう<ruby><rb>日</rb><rp>(</rp><rt>び</rt><rp>)</rp></ruby>ですか。」
+                                <br>A: Ngày mai là thứ mấy? 
+                                <br>B:「<ruby><rb>火</rb><rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>よう<ruby><rb>日</rb><rp>(</rp><rt>び</rt><rp>)</rp></ruby>です。」
+                                <br>B: Là thứ ba.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>50</td>
+                            <td>きょう
+                                <br>Hôm nay
+                            </td>
+                            <td>きょうは<ruby><rb>月</rb><rp>(</rp><rt>げつ</rt><rp>)</rp></ruby>よう<ruby><rb>日</rb><rp>(</rp><rt>び</rt><rp>)</rp></ruby>です。
+                                <br>Hôm nay là thứ Hai.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>51</td>
+                            <td>あした
+                                <br>Ngày mai
+                            </td>
+                            <td>あした、<ruby><rb>学校</rb><rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>へ<ruby><rb>行</rb><rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。
+                                <br>Ngày mai, tôi đi học.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>52</td>
+                            <td>きのう
+                                <br>Ngày hôm qua
+                            </td>
+                            <td>きのう、<ruby><rb>大学</rb><rp>(</rp><rt>だいがく</rt><rp>)</rp></ruby>へ<ruby><rb>行</rb><rp>(</rp><rt>い</rt><rp>)</rp></ruby>きました。
+                                <br>Hôm qua, tôi đã đi đến trường Đại học.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>53</td>
+                            <td>まいにち
+                                <br>Hàng ngày,mỗi ngày
+                            </td>
+                            <td>まいにち、にほんごをべんきょうします。
+                                <br>Hàng ngày, tôi học tiếng Nhật.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>54</td>
+                            <td>〜しゅうかん
+                                <br>〜tuần
+                            </td>
+                            <td>アメリカへ2しゅうかん<ruby><rb>行</rb><rp>(</rp><rt>い</rt><rp>)</rp></ruby>きました。
+                                <br>Tôi đã đi Mỹ 2 tuần.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>55</td>
+                            <td>しち/ななにん
+                                <br>Bảy người
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>56</td>
+                            <td>〜か月
+                                <br>～かげつ
+                                <br>Tháng
+                            </td>
+                            <td>にほんごを1か月べんきょうしました。
+                                <br>Tôi đã học tiếng Nhật 1 tháng.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>57</td>
+                            <td>〜年
+                                <br>～ねん
+                                <br>Năm
+                            </td>
+                            <td>かんこくに5<ruby><rb>年</rb><rp>(</rp><rt>ねん</rt><rp>)</rp></ruby>いました。
+                                <br>Tôi đã ở Hàn Quốc 5 năm.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>58</td>
+                            <td>〜かい
+                                <br>Lần
+                            </td>
+                            <td>1しゅうかんに3かいコンビニへ<ruby><rb>行</rb><rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。
+                                <br>1 tuần, tôi đi đến cửa hàng tiện lợi 3 lần.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>59</td>
+                            <td>何かい
+                                <br>なんかい
+                                <br>Mấy lần
+                            </td>
+                            <td>A:「1しゅうかんに<ruby><rb>何</rb><rp>(</rp><rt>なん</rt><rp>)</rp></ruby>かい<ruby><rb>行</rb><rp>(</rp><rt>い</rt><rp>)</rp></ruby>きますか。」
+                                <br>A: 1 tuần bạn đi mấy lần?  
+                                <br>B:「2かい<ruby><rb>行</rb><rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。」
+                                <br>B: Tôi đi 2 lần.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>60</td>
+                            <td>アルバイト&lt;する&gt;
+                                <br>Việc làm thêm
+                            </td>
+                            <td><ruby><rb>土</rb><rp>(</rp><rt>ど</rt><rp>)</rp></ruby>よう<ruby><rb>日</rb><rp>(</rp><rt>び</rt><rp>)</rp></ruby>にアルバイトをします。
+                                <br>Tôi làm thêm vào thứ Bảy.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>61</td>
+                            <td>する
+                                <br>Làm
+                            </td>
+                            <td><ruby><rb>日</rb><rp>(</rp><rt>にち</rt><rp>)</rp></ruby>よう<ruby><rb>日</rb><rp>(</rp><rt>び</rt><rp>)</rp></ruby>はアルバイトをしません。
+                                <br>Chủ nhật, tôi không làm thêm.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>62</td>
+                            <td>ことば
+                                <br>Từ ngữ, tiếng
+                            </td>
+                            <td><ruby><rb>日本</rb><rp>(</rp><rt>にほん</rt><rp>)</rp></ruby>のことばがわかりません。
+                                <br>Tôi không biết tiếng Nhật.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>63</td>
+                            <td>字
+                                <br>じ
+                                <br>Chữ
+                            </td>
+                            <td><ruby><rb>高校</rb><rp>(</rp><rt>こうこう</rt><rp>)</rp></ruby>で<ruby><rb>日本</rb><rp>(</rp><rt>にほん</rt><rp>)</rp></ruby>の<ruby><rb>字</rb><rp>(</rp><rt>じ</rt><rp>)</rp></ruby>をべんきょうしました。
+                                <br>Tôi đã học chữ Nhật ở trường cấp III.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>64</td>
+                            <td>にほんご
+                                <br>Tiếng Nhật
+                            </td>
+                            <td>エジプトでにほんごをべんきょうしました。
+                                <br>Tôi đã học tiếng Nhật ơr Ai Cập.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>65</td>
+                            <td>〜ご
+                                <br>Tiếng
+                            </td>
+                            <td>えいごで<ruby><rb>話</rb><rp>(</rp><rt>はな</rt><rp>)</rp></ruby>してください。
+                                <br>Hãy nói bằng tiếng Anh.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>66</td>
+                            <td>話す
+                                <br>はなす
+                                <br>Nói, nói chuyện
+                            </td>
+                            <td><ruby><rb>先生</rb><rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>とにほんごで<ruby><rb>話</rb><rp>(</rp><rt>はな</rt><rp>)</rp></ruby>します。
+                                <br>Tôi nói chuyện với thầy/cô bằng tiếng Nhật.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>67</td>
+                            <td>ゆっくり
+                                <br>Chậm, chậm rãi
+                            </td>
+                            <td><ruby><rb>先生</rb><rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>はゆっくり<ruby><rb>話</rb><rp>(</rp><rt>はな</rt><rp>)</rp></ruby>します。
+                                <br>Thầy/cô giáo nói chuyện chậm rãi.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>68</td>
+                            <td>言う
+                                <br>いう
+                                <br>Nói
+                            </td>
+                            <td>ゆっくり<ruby><rb>言</rb><rp>(</rp><rt>い</rt><rp>)</rp></ruby>ってください。
+                                <br>Hãy nói chậm.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>69</td>
+                            <td>もういちど
+                                <br>Một lần nữa
+                            </td>
+                            <td>もういちど<ruby><rb>言</rb><rp>(</rp><rt>い</rt><rp>)</rp></ruby>います。
+                                <br>Tôi sẽ nói lại lần nữa.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>70</td>
+                            <td>おねがいします
+                                <br>Xin vui lòng
+                            </td>
+                            <td>もういちどおねがいします。
+                                <br>Xin vui lòng 1 lần nữa.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>71</td>
+                            <td>わかる
+                                <br>Hiểu, biết
+                            </td>
+                            <td>ひらがながわかります。
+                                <br>Tôi biết chữ Hiragana.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>72</td>
+                            <td>少し
+                                <br>すこし
+                                <br>Một chút
+                            </td>
+                            <td>かんじが<ruby><rb>少</rb><rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>しわかります。
+                                <br>Tôi biết chữ Hán một chút.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>73</td>
+                            <td>もう少し
+                                <br>もうすこし
+                                <br>Một chút nữa
+                            </td>
+                            <td>もう少しゆっくり<ruby><rb>話</rb><rp>(</rp><rt>はな</rt><rp>)</rp></ruby>してください。
+                                <br>Hãy nới chậm thêm một chút nữa.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>74</td>
+                            <td>よく
+                                <br>Rõ, giỏi, tốt
+                            </td>
+                            <td>よくわかりました。
+                                <br>Tôi đã hiểu rõ.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>75</td>
+                            <td>だいたい
+                                <br>Đại khái
+                            </td>
+                            <td>だいたいわかりました。
+                                <br>Tôi đã hiểu đại khái.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>76</td>
+                            <td>ぜんぜん
+                                <br>Hoàn toàn
+                            </td>
+                            <td>A:「わかりましたか。」
+                                <br>A: Bạn có hiểu không?
+                                <br>B:「いいえ。ぜんぜんわかりませんでした。」
+                                <br>B: Không. Tôi hoàn toàn không hiểu.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>77</td>
+                            <td>ひらがな
+                                <br>(Chữ) Hiragana
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>78</td>
+                            <td>かたかな
+                                <br>(Chữ) katakana
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>79</td>
+                            <td>かんじ
+                                <br>Chữ Hán
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>80</td>
+                            <td>ローマ字
+                                <br>ローマじ
+                                <br> Chữ Roman(La tinh)
+                            </td>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>81</td>
+                            <td>読む
+                                <br>よむ
+                                <br>Đọc
+                            </td>
+                            <td>にほんごの<ruby><rb>本</rb><rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby><rb>読</rb><rp>(</rp><rt>よ</rt><rp>)</rp></ruby>みます。
+                                <br>Tôi đọc sách tiếng Nhật.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>82</td>
+                            <td>本
+                                <br>ほん
+                                <br>Sách, quyển sách
+                            </td>
+                            <td>ちゅうごにの<ruby><rb>本</rb><rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby><rb>読</rb><rp>(</rp><rt>よ</rt><rp>)</rp></ruby>みました。
+                                <br>Tôi đã đọc sách tiếng Trung Quốc.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>83</td>
+                            <td>書く
+                                <br>かく
+                                <br>Viết
+                            </td>
+                            <td>かんじを晝きます。
+                                <br>Tôi viết chữ Hán.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>84</td>
+                            <td>聞く
+                                <br>きく
+                                <br>Nghe
+                            </td>
+                            <td>うちでCDを<ruby><rb>聞</rb><rp>(</rp><rt>き</rt><rp>)</rp></ruby>きます。
+                                <br>Tôi nghe đĩa CD ở nhà.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>85</td>
+                            <td>シーディー
+                                <br>Đĩa CD
+                            </td>
+                            <td><ruby><rb>学校</rb><rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>でCDを<ruby><rb>聞</rb><rp>(</rp><rt>き</rt><rp>)</rp></ruby>きました。
+                                <br>Tôi đã nghe đĩa CD ở trường.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>86</td>
+                            <td>しらべる
+                                <br>Tra, tìm hiểu
+                            </td>
+                            <td>じしょでことばをしらべます。
+                                <br>Tôi tra từ bằng từ điển.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>87</td>
+                            <td>買う
+                                <br>かう
+                                <br>Mua
+                            </td>
+                            <td>きのう、CDを<ruby><rb>買</rb><rp>(</rp><rt>か</rt><rp>)</rp></ruby>いました。
+                                <br>Hôm qua, tôi đã mua đĩa CD.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>88</td>
+                            <td>じしょ
+                                <br>Từ điển
+                            </td>
+                            <td>にほんごのじしょを<ruby><rb>買</rb><rp>(</rp><rt>か</rt><rp>)</rp></ruby>いました.
+                                <br>Tôi đã mua từ điển tiếng Nhật.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>89</td>
+                            <td>でんしじしょ
+                                <br>Từ điển điện tử
+                            </td>
+                            <td>でんしじしょでいみをしらべます。
+                                <br>Tôi tra ý nghĩa bằng từ điển điện tử.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>90</td>
+                            <td>いみ
+                                <br>Ý nghĩa
+                            </td>
+                            <td>にほんごのいみがわかりません。
+                                <br>Tôi không hiểu nghĩa tiếng Nhật.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>91</td>
+                            <td>がんばる
+                                <br>Cố gắng
+                            </td>
+                            <td>がんばってください。
+                                <br>Hãy cố gắng lên.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>92</td>
+                            <td>しゅくだい
+                                <br>Bài tập về nhà.
+                            </td>
+                            <td>きょうはしゅくだいがあります。
+                                <br>Hôm nay có bài tập về nhà.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>93</td>
+                            <td>にっき
+                                <br>Nhật ký.
+                            </td>
+                            <td>まいにち、にっきを<ruby><rb>書</rb><rp>(</rp><rt>か</rt><rp>)</rp></ruby>きます。
+                                <br>Hằng ngày, tôi viết nhật ký.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>94</td>
+                            <td>レポート
+                                <br>Bài báo cáo
+                            </td>
+                            <td><ruby><rb>学校</rb><rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>でレポートを<ruby><rb>書</rb><rp>(</rp><rt>か</rt><rp>)</rp></ruby>きました。
+                                <br>Tôi đã viết bài báo cáo ở trường.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>95</td>
+                            <td>としょかん
+                                <br>Thư viện
+                            </td>
+                            <td>としょかんで<ruby><rb>本</rb><rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby><rb>読</rb><rp>(</rp><rt>よ</rt><rp>)</rp></ruby>みます。
+                                <br>Tôi đọc sách ở thư viện.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>96</td>
+                            <td>ほんや
+                                <br>Tiệm sách
+                            </td>
+                            <td>ほんやでじしょを<ruby><rb>買</rb><rp>(</rp><rt>か</rt><rp>)</rp></ruby>いました。
+                                <br>Tôi đã mua từ điển ở tiệm sách.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>97</td>
+                            <td>れんしゅうぐする&gt;
+                                <br>Luyện tập
+                            </td>
+                            <td>かんじをれんしゅうします。
+                                <br>Tôi luyện chữ hán.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>98</td>
+                            <td>スピーチ
+                                <br>Hùng biện, diễn thuyết
+                            </td>
+                            <td><ruby><rb>土</rb><rp>(</rp><rt>ど</rt><rp>)</rp></ruby>よう<ruby><rb>日</rb><rp>(</rp><rt>び</rt><rp>)</rp></ruby>に<ruby><rb>学校</rb><rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>でスピーチをしました。
+                                <br>Tôi đã hùng biện ở trường vào ngày thứ bảy.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>99</td>
+                            <td>おぼえる
+                                <br>Nhớ, ghi nhớ
+                            </td>
+                            <td>まいにち,かんじをおぼえます。
+                                <br>Hằng ngày, tôi ghi nhớ chữ Hán.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>100</td>
+                            <td>わすれる
+                                <br>Quên
+                            </td>
+                            <td>しゅくだいをわすれました。
+                                <br>Tôi đã quên bài tập về nhà.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>101</td>
+                            <td>もんだい
+                                <br>Câu hỏi, nghi vấn
+                            </td>
+                            <td>もんだいを<ruby><rb>読</rb><rp>(</rp><rt>よ</rt><rp>)</rp></ruby>んでください。
+                                <br>Hãy đọc câu hỏi.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>102</td>
+                            <td>れい
+                                <br>Ví dụ
+                            </td>
+                            <td>れいを<ruby><rb>見</rb><rp>(</rp><rt>み</rt><rp>)</rp></ruby>てください。
+                                <br>Hãy xem ví dụ.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>103</td>
+                            <td>こたえ
+                                <br>Câu trả lời
+                            </td>
+                            <td>こたえがわかりません
+                                <br>Tôi không biết câu trả lời.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>104</td>
+                            <td>しつもん&lt;する&gt;
+                                <br>Câu hỏi
+                            </td>
+                            <td><ruby><rb>先生</rb><rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>にしつもんします。
+                                <br>Tôi đặt câu hỏi với thầy / cô giáo.
+                            </td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>105</td>
+                            <td>けんがく&lt;する&gt;
+                                <br>Tham quan
+                            </td>
+                            <td>にほんご<ruby><rb>学校</rb><rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>をけんがくしました。
+                                <br>Tôi đã tham quan trường tiếng Nhật.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/home.js"></script>
+
+</body>
+
+</html>

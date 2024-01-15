@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Học Tiếng Nhật - Katakana</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/mdui.min.css" />
+</head>
+
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-drawer-body-left mdui-appbar-with-toolbar">
+    <div id="home">
+        <header class="mdui-appbar mdui-appbar-fixed">
+            <div class="mdui-toolbar mdui-color-theme">
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer',swipe: true}"><i
+                        class="mdui-icon material-icons">menu</i></a>
+                <a href="javascript:;" class="mdui-typo-headline mdui-hidden-xs">Học Tiếng Nhật</a>
+                <a href="javascript:;" class="mdui-typo-title">Katakana</a>
+                <div class="mdui-toolbar-spacer"></div>
+            </div>
+        </header>
+        <div class="mdui-drawer" id="drawer">
+            <ul class="mdui-list" mdui-collapse="{accordion: true}">
+                <a href="index.html" class="mdui-list-item mdui-ripple">
+                    <span style="font-size: 24px" class="mdui-list-item-icon">あ</span>
+                    <div class="mdui-list-item-content">Hiragana</div>
+                </a>
+                <a href="katakana.html" class="mdui-list-item mdui-ripple">
+                    <span style="font-size: 24px" class="mdui-list-item-icon">ア</span>
+                    <div class="mdui-list-item-content">Katakana</div>
+                </a>
+                <a href="80_kanji.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">日</i>
+                    <div class="mdui-list-item-content">Kanji</div>
+                </a>
+                <a href="vocab.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+                    <div class="mdui-list-item-content">Từ Vựng</div>
+                </a>
+                <!--<a href="grammar.html" class="mdui-list-item mdui-ripple">
+                        <i class="mdui-list-item-icon mdui-icon material-icons">school</i>
+                        <div class="mdui-list-item-content">Ngữ Pháp</div>
+                    </a>  -->
+                <a href="test.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">check</i>
+                    <div class="mdui-list-item-content">Ôn Tập Kiến Thức</div>
+                </a>
+                <a href="kanjitest.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">work</i>
+                    <div class="mdui-list-item-content">Kiểm Tra Kanji</div>
+                </a>
+            </ul>
+        </div>
+        <main id="home-page" class="mdui-container">
+            <div class="mdui-dialog" id="showWord">
+                <div class="close-dialog mdui-hidden-sm-up">
+                    <button class="mdui-btn mdui-btn-icon" mdui-dialog-close="{target: '#showWord'}">
+                        <i class="mdui-icon material-icons">close</i>
+                    </button>
+                </div>
+                <div class="mdui-row">
+                    <div class="mdui-col-xs-12 t">
+                        <div class="mdui-row">
+                            <div class="s mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-6 mdui-col-lg-6">
+                                <div class="kata">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">
+                                                {{ wordData.kata }}
+                                            </text></svg><canvas id="pad"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-6 mdui-col-lg-6 mdui-typo">
+                                <div class="other mdui-hidden-sm-up">
+                                    <button
+                                        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent clear-canvas">
+                                        Xoá</button><button
+                                        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                                        @click.stop="playAudio">
+                                        Play Audio
+                                    </button>
+                                </div>
+                                <div class="stroke-order">
+                                    <div class="mdui-typo-headline-opacity">Cách viết:</div>
+                                    <img :src="wordData.kataStrokeOrder" />
+                                </div>
+                                <div class="other mdui-hidden-xs-down">
+                                    <button
+                                        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent clear-canvas">
+                                        Xoá</button><button
+                                        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                                        @click.stop="playAudio">
+                                        Play Audio
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdui-row-xs-5 mdui-row-sm-5 mdui-row-md-5 mdui-grid-list">
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('0', 'あ', 'ア', './audio/a.mp3', './images/hiraStrokeOrder/a.png','./images/kataStrokeOrder/a.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ア</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(0)" i="0">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>a
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>あ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/a.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('1', 'い', 'イ', './audio/i.mp3', './images/hiraStrokeOrder/i.png', './images/kataStrokeOrder/i.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">イ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(1)" i="1">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>i
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>い
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/i.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('2', 'う', 'ウ', './audio/u.mp3', './images/hiraStrokeOrder/u.png', './images/kataStrokeOrder/u.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ウ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(2)" i="2">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ư
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>う
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/u.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('3', 'え', 'エ', './audio/e.mp3', './images/hiraStrokeOrder/e.png', './images/kataStrokeOrder/e.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">エ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(3)" i="3">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ê
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>え
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/e.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('4', 'お', 'オ', './audio/o.mp3', './images/hiraStrokeOrder/o.png', './images/kataStrokeOrder/o.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">オ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(4)" i="4">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ô
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>お
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/o.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('5', 'か', 'カ', './audio/ka.mp3', './images/hiraStrokeOrder/ka.png', './images/kataStrokeOrder/ka.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">カ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(5)" i="5">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ka
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>か
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ka.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('6', 'き', 'キ', './audio/ki.mp3', './images/hiraStrokeOrder/ki.png', './images/kataStrokeOrder/ki.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">キ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(6)" i="6">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ki
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>き
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ki.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('7', 'く', 'ク', './audio/ku.mp3', './images/hiraStrokeOrder/ku.png', './images/kataStrokeOrder/ku.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ク</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(7)" i="7">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ku
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>く
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ku.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('8', 'け', 'ケ', './audio/ke.mp3', './images/hiraStrokeOrder/ke.png', './images/kataStrokeOrder/ke.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ケ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(8)" i="8">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ke
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>け
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ke.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('9', 'こ', 'コ', './audio/ko.mp3', './images/hiraStrokeOrder/ko.png', './images/kataStrokeOrder/ko.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">コ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(9)" i="9">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ko
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>こ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ko.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('10', 'さ', 'サ', './audio/sa.mp3', './images/hiraStrokeOrder/sa.png', './images/kataStrokeOrder/sa.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">サ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(10)" i="10">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>sa
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>さ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/sa.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('11', 'し', 'シ', './audio/si.mp3', './images/hiraStrokeOrder/si.png', './images/kataStrokeOrder/si.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">シ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(11)" i="11">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>shi
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>し
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/si.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('12', 'す', 'ス', './audio/su.mp3', './images/hiraStrokeOrder/su.png', './images/kataStrokeOrder/su.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ス</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(12)" i="12">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>su
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>す
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/su.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('13', 'せ', 'セ', './audio/se.mp3', './images/hiraStrokeOrder/se.png', './images/kataStrokeOrder/se.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">セ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(13)" i="13">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>se
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>せ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/se.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('14', 'そ', 'ソ', './audio/so.mp3', './images/hiraStrokeOrder/so.png', './images/kataStrokeOrder/so.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ソ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(14)" i="14">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>so
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>そ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/so.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('15', 'た', 'タ', './audio/ta.mp3', './images/hiraStrokeOrder/ta.png', './images/kataStrokeOrder/ta.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">タ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(15)" i="15">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ta
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>た
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ta.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('16', 'ち', 'チ', './audio/ti.mp3', './images/hiraStrokeOrder/ti.png', './images/kataStrokeOrder/ti.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">チ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(16)" i="16">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>chi
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ち
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ti.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('17', 'つ', 'ツ', './audio/tu.mp3', './images/hiraStrokeOrder/tu.png', './images/kataStrokeOrder/tu.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ツ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(17)" i="17">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>tsu
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>つ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/tu.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('18', 'て', 'テ', './audio/te.mp3', './images/hiraStrokeOrder/te.png', './images/kataStrokeOrder/te.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">テ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(18)" i="18">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>te
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>て
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/te.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('19', 'と', 'ト', './audio/to.mp3', './images/hiraStrokeOrder/to.png', './images/kataStrokeOrder/to.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ト</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(19)" i="19">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>to
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>と
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/to.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('20', 'な', 'ナ', './audio/na.mp3', './images/hiraStrokeOrder/na.png', './images/kataStrokeOrder/na.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ナ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(20)" i="20">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>na
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>な
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/na.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('21', 'に', 'ニ', './audio/ni.mp3', './images/hiraStrokeOrder/ni.png', './images/kataStrokeOrder/ni.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ニ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(21)" i="21">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ni
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>に
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ni.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('22', 'ぬ', 'ヌ', './audio/nu.mp3', './images/hiraStrokeOrder/nu.png', './images/kataStrokeOrder/nu.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ヌ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(22)" i="22">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>nu
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ぬ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/nu.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('23', 'ね', 'ネ', './audio/ne.mp3', './images/hiraStrokeOrder/ne.png', './images/kataStrokeOrder/ne.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ネ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(23)" i="23">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ne
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ね
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ne.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('24', 'の', 'ノ', './audio/no.mp3', './images/hiraStrokeOrder/no.png', './images/kataStrokeOrder/no.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ノ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(24)" i="24">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>no
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>の
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/no.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('25', 'は', 'ハ', './audio/ha.mp3', './images/hiraStrokeOrder/ha.png', './images/kataStrokeOrder/ha.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ハ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(25)" i="25">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ha
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>は
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ha.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('26', 'ひ', 'ヒ', './audio/hi.mp3', './images/hiraStrokeOrder/hi.png', './images/kataStrokeOrder/hi.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ヒ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(26)" i="26">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>hi
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ひ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/hi.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('27', 'ふ', 'フ', './audio/hu.mp3', './images/hiraStrokeOrder/hu.png', './images/kataStrokeOrder/hu.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">フ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(27)" i="27">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>hu
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ふ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/hu.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('28', 'へ', 'ヘ', './audio/he.mp3', './images/hiraStrokeOrder/he.png', './images/kataStrokeOrder/he.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ヘ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(28)" i="28">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>he
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>へ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/he.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('29', 'ほ', 'ホ', './audio/ho.mp3', './images/hiraStrokeOrder/ho.png', './images/kataStrokeOrder/ho.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ホ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(29)" i="29">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ho
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ほ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ho.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('30', 'ま', 'マ', './audio/ma.mp3', './images/hiraStrokeOrder/ma.png', './images/kataStrokeOrder/ma.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">マ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(30)" i="30">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ma
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ま
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ma.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('31', 'み', 'ミ', './audio/mi.mp3', './images/hiraStrokeOrder/mi.png', './images/kataStrokeOrder/mi.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ミ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(31)" i="31">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>mi
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>み
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/mi.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('32', 'む', 'ム', './audio/mu.mp3', './images/hiraStrokeOrder/mu.png', './images/kataStrokeOrder/mu.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ム</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(32)" i="32">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>mu
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>む
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/mu.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('33', 'め', 'メ', './audio/me.mp3', './images/hiraStrokeOrder/me.png', './images/kataStrokeOrder/me.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">メ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(33)" i="33">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>me
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>め
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/me.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('34', 'も', 'モ', './audio/mo.mp3', './images/hiraStrokeOrder/mo.png', './images/kataStrokeOrder/mo.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">モ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(34)" i="34">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>mo
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>も
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/mo.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('35', 'や', 'ヤ', './audio/ya.mp3', './images/hiraStrokeOrder/ya.png', './images/kataStrokeOrder/ya.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ヤ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(35)" i="35">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ya
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>や
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ya.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card mdui-invisible">
+                        <div class="mdui-card">
+                            <div @click="showDialog('36', '', '', '', '', '', '', '')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575"></text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(36)" i="36">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Pronunciation:
+                                            </span>
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, '')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('37', 'ゆ', 'ユ', './audio/yu.mp3', './images/hiraStrokeOrder/yu.png', './images/kataStrokeOrder/yu.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ユ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(37)" i="37">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>yu
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ゆ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/yu.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card mdui-invisible">
+                        <div class="mdui-card">
+                            <div @click="showDialog('38', '', '', '', '', '', '', '')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575"></text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(38)" i="38">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Pronunciation:
+                                            </span>
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, '')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('39', 'よ', 'ヨ', './audio/yo.mp3', './images/hiraStrokeOrder/yo.png', './images/kataStrokeOrder/yo.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ヨ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(39)" i="39">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>yo
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>よ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/yo.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('40', 'ら', 'ラ', './audio/ra.mp3', './images/hiraStrokeOrder/ra.png', './images/kataStrokeOrder/ra.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ラ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(40)" i="40">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ra
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ら
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ra.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('41', 'り', 'リ', './audio/ri.mp3', './images/hiraStrokeOrder/ri.png', './images/kataStrokeOrder/ri.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">リ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(41)" i="41">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ri
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>り
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ri.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('42', 'る', 'ル', './audio/ru.mp3', './images/hiraStrokeOrder/ru.png', './images/kataStrokeOrder/ru.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ル</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(42)" i="42">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ru
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>る
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ru.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('43', 'れ', 'レ', './audio/re.mp3', './images/hiraStrokeOrder/re.png', './images/kataStrokeOrder/re.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">レ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(43)" i="43">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>re
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>れ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/re.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('44', 'ろ', 'ロ', './audio/ro.mp3', './images/hiraStrokeOrder/ro.png', './images/kataStrokeOrder/ro.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ロ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(44)" i="44">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>ro
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ろ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/ro.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('45', 'わ', 'ワ', './audio/wa.mp3', './images/hiraStrokeOrder/wa.png', './images/kataStrokeOrder/wa.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ワ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(45)" i="45">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>wa
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>わ
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/wa.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card mdui-invisible">
+                        <div class="mdui-card">
+                            <div @click="showDialog('46', '', '', '', '', '', '', '')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575"></text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(46)" i="46">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Pronunciation:
+                                            </span>
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, '')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card mdui-invisible">
+                        <div class="mdui-card">
+                            <div @click="showDialog('47', '', '', '', '', '', '', '')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575"></text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(47)" i="47">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Pronunciation:
+                                            </span>
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, '')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card mdui-invisible">
+                        <div class="mdui-card">
+                            <div @click="showDialog('48', '', '', '', '', '', '', '')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575"></text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(48)" i="48">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Pronunciation:
+                                            </span>
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, '')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('49', 'を', 'ヲ', './audio/wo.mp3', './images/hiraStrokeOrder/wo.png', './images/kataStrokeOrder/wo.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ヲ</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(49)" i="49">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>wo
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>を
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/wo.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="word-card">
+                        <div class="mdui-card">
+                            <div @click="showDialog('50', 'ん', 'ン', './audio/n.mp3', './images/hiraStrokeOrder/n.png', './images/kataStrokeOrder/n.png')"
+                                mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                <div class="text">
+                                    <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <text font-size="300" fill="#757575">ン</text>
+                                    </svg>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="mdui-card-actions" :class="border(50)" i="50">
+                                <div class="mdui-row">
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6">
+                                        <div class="ac-l" title="发音">
+                                            <span class="d mdui-hidden-sm-down">Phát âm: </span>n
+                                        </div>
+                                        <div class="ac-l" title="片假名">
+                                            <span class="d mdui-hidden-sm-down">Tương tự: </span>ん
+                                        </div>
+                                    </div>
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 r">
+                                        <button @click.stop="playAudio($event, './audio/n.mp3')" title="播放音频"
+                                            class="mdui-color-theme-accent mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-xs-down">
+                                            <i class="mdui-icon material-icons">music_note</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/home.js"></script>
+</body>
+
+</html>

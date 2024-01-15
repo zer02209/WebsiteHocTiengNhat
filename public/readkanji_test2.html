@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Học Tiếng Nhật - Đọc - Test 1</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/mdui.min.css" />
+</head>
+
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-drawer-body-left mdui-appbar-with-toolbar">
+    <div id="kajitest1">
+        <header class="mdui-appbar mdui-appbar-fixed">
+            <div class="mdui-toolbar mdui-color-theme">
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer',swipe: true}"><i
+                        class="mdui-icon material-icons">menu</i></a>
+                <a href="javascript:;" class="mdui-typo-headline mdui-hidden-xs">Học Tiếng Nhật</a>
+                <a href="javascript:;" class="mdui-typo-title">Ôn Tập Đọc</a>
+            </div>
+        </header>
+        <div class="mdui-drawer" id="drawer">
+            <ul class="mdui-list" mdui-collapse="{accordion: true}">
+                <a href="index.html" class="mdui-list-item mdui-ripple">
+
+                    <span style="font-size:24px" class="mdui-list-item-icon">あ</span>
+                    <div class="mdui-list-item-content">Hiragana</div>
+                </a>
+                <a href="katakana.html" class="mdui-list-item mdui-ripple">
+
+                    <span style="font-size:24px" class="mdui-list-item-icon">ア</span>
+                    <div class="mdui-list-item-content">Katakana</div>
+                </a>
+                <a href="80_kanji.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">日</i>
+                    <div class="mdui-list-item-content">Kanji</div>
+                </a>
+                <a href="vocab.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+                    <div class="mdui-list-item-content">Từ Vựng</div>
+                </a>
+                <!--<a href="grammar.html" class="mdui-list-item mdui-ripple">
+                        <i class="mdui-list-item-icon mdui-icon material-icons">school</i>
+                        <div class="mdui-list-item-content">Ngữ Pháp</div>
+                    </a>  -->
+                <a href="test.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">check</i>
+                    <div class="mdui-list-item-content">Ôn Tập Kiến Thức</div>
+                </a>
+                <a href="kanjitest.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">work</i>
+                    <div class="mdui-list-item-content">Kiểm Tra Kanji</div>
+                </a>
+            </ul>
+        </div>
+        <main id="kanjitest2-page" class="mdui-container">
+            <div class="title mdui-typo-display-1 mdui-text-color-theme mdui-valign mdui-clearfix">
+                <div class="ttbox mdui-clearfix">
+                    <div class="mdui-float-left tt">Đọc và chọn đáp án đúng (Đúng +1, Sai -1)</div>
+                    <div class="mdui-float-left fraction mdui-m-l-3">Điểm: {{ fraction }} / 46</div>
+                </div><button @click="refresh"
+                    class="mdui-float-right mdui-m-l-3 mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">Làm
+                    mới</button>
+            </div>
+            <div class="mdui-valign cr mdui-ripple mdui-shadow-2" @click="toggleCurrent" >
+                <svg viewbox="0 -200 100 300"
+                    class="mdui-center" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <text font-size="200" fill="#757575" text-anchor="middle" dominant-baseline="middle">
+                        {{ current}}
+                    </text>
+                </svg>
+            </div>
+            <div class="mdui-typo-headline mdui-text-center mdui-m-t-4">Nhấp chuột để đổi sang cách đọc: {{ currentType }}
+            </div>
+            <div class="word mdui-m-t-5">
+                <div class="bb mdui-row-xs-2 mdui-row-sm-5 mdui-grid-list">
+                    <div class="mdui-col tt mdui-valign">
+                        <div class="card mdui-typo-title mdui-center">Chọn từ Kanji tương ứng: </div>
+                    </div>
+                    <div class="mdui-col" v-for="(item, index) in randomkanji">
+                        <div class="card mdui-card mdui-ripple mdui-text-center"
+                            @click="verification(item, $event, 'kanji')">{{ item }}</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/readkanji_test2.js"></script>
+</body>
+
+</html>

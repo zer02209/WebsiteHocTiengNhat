@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Học Tiếng Nhật - Kanji</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/mdui.min.css" />
+</head>
+
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-drawer-body-left mdui-appbar-with-toolbar">
+    <div id="test">
+        <header class="mdui-appbar mdui-appbar-fixed">
+            <div class="mdui-toolbar mdui-color-theme">
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer',swipe: true}"><i
+                        class="mdui-icon material-icons">menu</i></a>
+                <a href="javascript:;" class="mdui-typo-headline mdui-hidden-xs">Học Tiếng Nhật</a>
+                <a href="javascript:;" class="mdui-typo-title">Kanji</a>
+                <div class="mdui-toolbar-spacer"></div>
+            </div>
+        </header>
+        <div class="mdui-drawer" id="drawer">
+            <ul class="mdui-list" mdui-collapse="{accordion: true}">
+                <a href="index.html" class="mdui-list-item mdui-ripple">
+                    <span style="font-size:24px" class="mdui-list-item-icon">あ</span>
+                    <div class="mdui-list-item-content">Hiragana</div>
+                </a>
+                <a href="katakana.html" class="mdui-list-item mdui-ripple">
+                    <span style="font-size:24px" class="mdui-list-item-icon">ア</span>
+                    <div class="mdui-list-item-content">Katakana</div>
+                </a>
+                <a href="80_kanji.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">日</i>
+                    <div class="mdui-list-item-content">Kanji</div>
+                </a>
+                <a href="vocab.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+                    <div class="mdui-list-item-content">Từ Vựng</div>
+                </a>
+                <!--<a href="grammar.html" class="mdui-list-item mdui-ripple">
+                        <i class="mdui-list-item-icon mdui-icon material-icons">school</i>
+                        <div class="mdui-list-item-content">Ngữ Pháp</div>
+                    </a>  -->
+                <a href="test.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">check</i>
+                    <div class="mdui-list-item-content">Ôn Tập Kiến Thức</div>
+                </a>
+                <a href="kanjitest.html" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">work</i>
+                    <div class="mdui-list-item-content">Kiểm Tra Kanji</div>
+                </a>
+            </ul>
+        </div>
+        <main id="home-page" class="mdui-container">
+            <div class="mdui-dialog" id="showWord">
+                <div class="close-dialog mdui-hidden-sm-up">
+                    <button class="mdui-btn mdui-btn-icon" mdui-dialog-close="{target: '#showWord'}">
+                        <i class="mdui-icon material-icons">close</i>
+                    </button>
+                </div>
+                <div>
+                    <div class="mdui-col-xs-12 t">
+                        <div class="mdui-row">
+                            <div class="s mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-6 mdui-col-lg-6">
+                                <div class="hira">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">
+                                                {{ wordData.hira }}
+                                            </text></svg><canvas id="pad"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-6 mdui-col-lg-6 mdui-typo">
+                                <div class="other mdui-hidden-sm-up">
+                                    <button
+                                        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent clear-canvas">Xoá</button>
+                                </div>
+                                <div class="stroke-order">
+                                    <div class="mdui-typo-headline-opacity">Cách viết:</div>
+                                    <img :src="wordData.hiraStrokeOrder" />
+                                    <div class="other mdui-hidden-xs-down">
+                                        <button
+                                            class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent clear-canvas">Xoá</button>
+                                    </div>
+                                    <div class="mdui-typo-headline-opacity">Quy tắc viết chữ kanji</div>
+                                    <div class="mdui-typo-headline-opacity">1. Ngang trước sổ sau</div>
+                                    <div class="mdui-typo-headline-opacity">2. Phẩy trước mác sau</div>
+                                    <div class="mdui-typo-headline-opacity">3. Trái trước phải sau</div>
+                                    <div class="mdui-typo-headline-opacity">4. Trên trước dưới sau</div>
+                                    <div class="mdui-typo-headline-opacity">5. Ngoài trước trong sau</div>
+                                    <div class="mdui-typo-headline-opacity">6. Vào trước đóng sau</div>
+                                    <div class="mdui-typo-headline-opacity">7. Giữa trước hai bên sau</div>
+                                    <div class="mdui-typo-headline-opacity">8. Bộ 辶 và 廴 viết sau cùng</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdui-table">
+                <table id="kanji" class="mdui-table mdui-table-hoverable">
+                    <thead>
+                        <tr>
+                            <th class="mdui-color-blue">#</th>
+                            <th class="mdui-color-blue">Kanji</th>
+                            <th class="mdui-color-blue">Onyomi</th>
+                            <th class="mdui-color-blue">Kunyomi</th>
+                            <th class="mdui-color-blue">Kanji Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="mdui-table-row-selected">
+                            <td>1</td>
+                            <td>
+                                <div @click="showDialog('0', '日', '', '', './images/kanjiStrokeOrder/day.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">日</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>nichi, jitsu<p>ニチ, ジツ</p></a></td>
+                            <td>hi, -bi, -ka<p>ひ, -び,-か</p></a></td>
+                            <td>Ngày, Mặt trời, Nhật Bản, Số đếm cho ngày</td>
+
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>
+                                <div @click="showDialog('1', '一', '', '', './images/kanjiStrokeOrder/one.png','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">一</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>ichi<p>イチ</p></a></td>
+                            <td>hito(tsu)<p>ひと(つ)</p></a></td>
+                            <td>Một(1)</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>3</td>
+                            <td>
+                                <div @click="showDialog('2', '国', '', '', './images/kanjiStrokeOrder/country.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">国</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>koku<p>コク</p></a></td>
+                            <td>kuni<p>くに</p></a></td>
+                            <td>Đất nước, Quốc gia</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>
+                                <div @click="showDialog('3', '人', '', '', './images/kanjiStrokeOrder/person.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">人</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>jin, nin<p>ジン、 ニン</p></a></td>
+                            <td>hito<p>ひと</p></a></td>
+                            <td>Con người</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>5</td>
+                            <td>
+                                <div @click="showDialog('4', '年', '', '', './images/kanjiStrokeOrder/year.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">年</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>nen<p>ネン</p></a></td>
+                            <td>toshi<p>とし</p></a></td>
+                            <td>Năm(5), Số đếm cho năm</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>
+                                <div @click="showDialog('5', '大', '', '', './images/kanjiStrokeOrder/large.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">大</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>dai, tai<p>ダイ、 タイ</p></a></td>
+                            <td>oo(kii)<p>おお(きい)</p></a></td>
+                            <td>Rộng, Lớn</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>7</td>
+                            <td>
+                                <div @click="showDialog('6', '十', '', '', './images/kanjiStrokeOrder/ten.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">十</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>juu<p>ジュウ</p></a></td>
+                            <td>tou, to<p>とお、 と</p></a></td>
+                            <td>Mười(10)</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>
+                                <div @click="showDialog('7', '二', '', '', './images/kanjiStrokeOrder/two.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">二</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>ni, ji<p>ニ、 ジ</p></a></td>
+                            <td>futa(tsu)<p>ふた(つ)</p></a></td>
+                            <td>Hai(2)</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>9</td>
+                            <td>
+                                <div @click="showDialog('8', '本', '', '', './images/kanjiStrokeOrder/book.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">本</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>hon<p>ホン</p></a></td>
+                            <td>moto<p>もと</p></a></td>
+                            <td>Sách, Hiện tại, Đúng, Số đếm cho những thứ hình trụ dài</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>
+                                <div @click="showDialog('9', '中', '', '', './images/kanjiStrokeOrder/in.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">中</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>chuu<p>チュウ</p></a></td>
+                            <td>naka, uchi, ata(ru)<p>なか、 うち、 あた(る)</p></a></td>
+                            <td>Trong, Bên trong, Giữa, Trung bình, Trung tâm</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>11</td>
+                            <td>
+                                <div @click="showDialog('10', '長', '', '', './images/kanjiStrokeOrder/long.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">長</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>chou<p>チョウ</p></a></td>
+                            <td>naga(i), osa<p>なが(い)、 おさ</p></a></td>
+                            <td>Dài, Lãnh đạo, Cấp trên, Cao cấp</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>
+                                <div @click="showDialog('11', '出', '', '', './images/kanjiStrokeOrder/exit.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">出</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>shutsu, sui<p>シュツ、 スイ</p></a></td>
+                            <td>de(ru), da(su), i(deru)<p>で(る)、 だ(す)、 い(でる)</p></a>
+                            </td>
+                            <td>Thoát ra, Rời khỏi, Đi ra</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>13</td>
+                            <td>
+                                <div @click="showDialog('12', '三', '', '', './images/kanjiStrokeOrder/three.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">三</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>san<p>サン</p></a></td>
+                            <td>mi(tsu)<p>み(つ)</p></a></td>
+                            <td>Ba(3)</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>
+                                <div @click="showDialog('13', '時', '', '', './images/kanjiStrokeOrder/time.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">時</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>ji<p>ジ</p></a></td>
+                            <td>toki, doki<p>とき、 -どき</p></a></td>
+                            <td>Thời gian, Giờ</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>15</td>
+                            <td>
+                                <div @click="showDialog('14', '行', '', '', './images/kanjiStrokeOrder/going.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">行</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>kou, gyou, an<p>コウ、 ギョウ、アン</p></a></td>
+                            <td>i(ku), yu(ku), okona(u)<p>い(く)、 ゆ(く)、 おこな(う)</p></a></td>
+                            <td>Đi, Hành trình, Thực hiện, Đường kẻ, Hàng</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>
+                                <div @click="showDialog('15', '見', '', '', './images/kanjiStrokeOrder/see.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">見</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>ken<p>ケン</p></a></td>
+                            <td>mi(ru), mi(seru)<p>み(る)、 み(せる)</p></a></td>
+                            <td>Thấy, Hy vọng, Cơ hội, Ý tưởng, Ý kiến, Nhìn vào, Có thể nhìn thấy</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>17</td>
+                            <td>
+                                <div @click="showDialog('16', '月', '', '', './images/kanjiStrokeOrder/month.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">月</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>getsu, gatsu<p>ゲツ、 ガツ</p></a></td>
+                            <td>tsuki<p>つき</p></a></td>
+                            <td>Tháng, Mặt trăng</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>
+                                <div @click="showDialog('17', '分', '', '', './images/kanjiStrokeOrder/part.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">分</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>bun, fun, bu<p>ブン、 フン、 ブ</p></a></td>
+                            <td>wa(keru)<p>わ(ける)</p></a></td>
+                            <td>Một phần, Từng phút, Hiểu được</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>19</td>
+                            <td>
+                                <div @click="showDialog('18', '後', '', '', './images/kanjiStrokeOrder/behind.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">後</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>go, kou<p>ゴ、 コウ</p></a></td>
+                            <td>nochi, ushi(ro), ato<p>のち、 うし(ろ)、 あと</p></a></td>
+                            <td>Đằng sau, Sau khi</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td>
+                                <div @click="showDialog('19', '前', '', '', './images/kanjiStrokeOrder/before.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">前</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>zen<p>ゼン</p></a></td>
+                            <td>mae<p>まえ</p></a></td>
+                            <td>Phía trước, Trước khi</td>
+                        </tr>
+                        <tr class="mdui-color-blue">
+                            <td colspan="5"></td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>21</td>
+                            <td>
+                                <div @click="showDialog('20', '日', '', '', './images/kanjiStrokeOrder/life.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">生</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>sei, shou<p>セイ、 ショウ</p></a></td>
+                            <td>i(kiru), u(mu), o(u), ha(eru), nama<p>い(きる)、 う(む)、 お(う)、 は(える)、 なま</p></a></td>
+                            <td>Cuộc sống, Chân thật, Sinh</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>
+                                <div @click="showDialog('21', '五', '', '', './images/kanjiStrokeOrder/five.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">五</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>go<p>ゴ</p></a></td>
+                            <td>itsu(tsu)<p>いつ(つ)</p></a></td>
+                            <td>Năm(5)</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>23</td>
+                            <td>
+                                <div @click="showDialog('22', '間', '', '', './images/kanjiStrokeOrder/space.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">間</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>kan, ken<p>カン、 ケン</p></a></td>
+                            <td>aida, ma, ai<p>あいだ、 ま、 あい</p></a></td>
+                            <td>Khoảng thời gian, Khoảng không gian</td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td>
+                                <div @click="showDialog('23', '上', '', '', './images/kanjiStrokeOrder/up.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">上</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>jou, shou, shan<p>ジョウ、 ショウ、 シャン</p></a></td>
+                            <td>ue, uwa, kami, a(geru), nobo(ru), tatematsu(ru)<p>うえ、 うわ-、 かみ、 あ(げる)、 のぼ(る)、 たてまつ(る)</p>
+                                </a></td>
+                            <td>Bên trên, Phía trên</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>25</td>
+                            <td>
+                                <div @click="showDialog('24', '東', '', '', './images/kanjiStrokeOrder/east.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">東</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>tou<p>トウ</p></a></td>
+                            <td>higashi<p>ひがし</p></a></td>
+                            <td>Phía Đông</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td>
+                                <div @click="showDialog('25', '四', '', '', './images/kanjiStrokeOrder/four.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">四</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>shi<p>シ</p></a></td>
+                            <td>yo(tsu), yon<p>よ(つ)、 よん</p></a></td>
+                            <td>Bốn(4)</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>27</td>
+                            <td>
+                                <div @click="showDialog('26', '今', '', '', './images/kanjiStrokeOrder/now.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">今</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>kon, kin<p>コン、 キン</p></a></td>
+                            <td>ima<p>いま</p></a></td>
+                            <td>Bây giờ, Hiện tại</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td>
+                                <div @click="showDialog('27', '金', '', '', './images/kanjiStrokeOrder/gold.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">金</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>kin, kon, gon<p>キン、 コン、 ゴン</p></a></td>
+                            <td>kane, kana, gane<p>かね、 かな-、-がね</p></a></td>
+                            <td>Vàng</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>29</td>
+                            <td>
+                                <div @click="showDialog('28', '九', '', '', './images/kanjiStrokeOrder/nine.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">九</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>kyuu, ku<p>キュウ、 ク</p></a></td>
+                            <td>kokono(tsu)<p>ここの(つ)</p></a></td>
+                            <td>Chín(9)</td>
+                        </tr>
+                        <tr>
+                            <td>30</td>
+                            <td>
+                                <div @click="showDialog('29', '入', '', '', './images/kanjiStrokeOrder/enter.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">入</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>nyuu<p>ニュウ</p></a></td>
+                            <td>i(ru), hai(ru)<p>い(る)、はい(る)</p></a></td>
+                            <td>Đi vào, Chèn vào</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>31</td>
+                            <td>
+                                <div @click="showDialog('30', '学', '', '', './images/kanjiStrokeOrder/study.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">学</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>gaku<p>ガク</p></a></td>
+                            <td>mana(bu)<p>まな(ぶ)</p></a></td>
+                            <td>Học, Học hỏi, Khoa học</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>
+                                <div @click="showDialog('31', '高', '', '', './images/kanjiStrokeOrder/tall.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">高</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>kou<p>コウ</p></a></td>
+                            <td>taka(i)<p>たか(い)</p></a></td>
+                            <td>Cao, Độ cao, Đắt</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>33</td>
+                            <td>
+                                <div @click="showDialog('32', '円', '', '', './images/kanjiStrokeOrder/circle.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">円</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>en<p>エン</p></a></td>
+                            <td>maru(i)<p>まる(い)</p></a></td>
+                            <td>Vòng tròn, Yên, Hình tròn</td>
+                        </tr>
+                        <tr>
+                            <td>34</td>
+                            <td>
+                                <div @click="showDialog('33', '子', '', '', './images/kanjiStrokeOrder/child.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">子</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>shi, su, tsu<p>シ、 ス、 ツ</p></a></td>
+                            <td>ko, ne<p>こ、 ね</p></a></td>
+                            <td>Đứa trẻ</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>35</td>
+                            <td>
+                                <div @click="showDialog('34', '外', '', '', './images/kanjiStrokeOrder/outside.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">外</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>gai, ge<p>ガイ、 ゲ</p></a></td>
+                            <td>soto, hoka, hazu-, to-<p>そと、 ほか、 はず(す)、 と-</p></a></td>
+                            <td>Bên ngoài</td>
+                        </tr>
+                        <tr>
+                            <td>36</td>
+                            <td>
+                                <div @click="showDialog('35', '八', '', '', './images/kanjiStrokeOrder/eight.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">八</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>hachi<p>ハチ</p></a></td>
+                            <td>ya(tsu), you<p>や(つ)、 よう</p></a></td>
+                            <td>Tám(8)</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>37</td>
+                            <td>
+                                <div @click="showDialog('36', '六', '', '', './images/kanjiStrokeOrder/six.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">六</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>roku<p>ロク</p></a></td>
+                            <td>mu(tsu), mui<p>む(つ)、 むい</p></a></td>
+                            <td>Sáu(6)</td>
+                        </tr>
+                        <tr>
+                            <td>38</td>
+                            <td>
+                                <div @click="showDialog('37', '下', '', '', './images/kanjiStrokeOrder/below.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">下</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>ka, ge<p>カ、 ゲ</p></a></td>
+                            <td>shita, shimo, moto, sa(geru), kuda(ru), o(rosu)<p>した、 しも、 もと、 さ(げる)、 くだ(る)、 お(ろす)</p></a></td>
+                            <td>Bên dưới, Xuống, Hạ xuống, Đưa cho , Thấp, Thấp kém</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>39</td>
+                            <td>
+                                <div @click="showDialog('38', '来', '', '', './images/kanjiStrokeOrder/come.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">来</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>rai, tai<p>ライ、 タイ</p></a></td>
+                            <td>kuru, kitaru, ki, ko<p>く.る、きた.る、 き、 こ</p></a></td>
+                            <td>Đến, Đến hạn, Tiếp theo, Nguyên nhân, Trở thành</td>
+                        </tr>
+                        <tr>
+                            <td>40</td>
+                            <td>
+                                <div @click="showDialog('39', '気', '', '', './images/kanjiStrokeOrder/sprit.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">気</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>ki, ke<p>キ、 ケ</p></a></td>
+                            <td>iki<p>いき</p></a></td>
+                            <td>Tinh thần, Tâm trí, Không khí, Bầu không khí, Tâm trạng</td>
+                        </tr>
+                        <tr class="mdui-color-blue">
+                            <td colspan="5"></td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>41</td>
+                            <td>
+                                <div @click="showDialog('40', '小', '', '', './images/kanjiStrokeOrder/small.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">小</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>shou<p>ショウ</p></a></td>
+                            <td>chii(sai), ko-, o-, sa-<p>ちい(さい)、 こ-、 お-、 さ-</p></a></td>
+                            <td>Bé, Nhỏ</td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td>
+                                <div @click="showDialog('41', '七', '', '', './images/kanjiStrokeOrder/seven.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">七</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>shichi<p>シチ</p></a></td>
+                            <td>nana(tsu), nano<p>なな(つ)、 なの</p></a></td>
+                            <td>Bảy(7)</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>43</td>
+                            <td>
+                                <div @click="showDialog('42', '山', '', '', './images/kanjiStrokeOrder/mountain.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">山</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>san, sen<p>サン、 セン</p></a></td>
+                            <td>yama<p>やま</p></a></td>
+                            <td>Đồi núi</td>
+                        </tr>
+                        <tr>
+                            <td>44</td>
+                            <td>
+                                <div @click="showDialog('43', '話', '', '', './images/kanjiStrokeOrder/talk.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">話</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>wa<p>ワ</p></a></td>
+                            <td>hana(su), hanashi<p>はな(す)、 はなし</p></a></td>
+                            <td>Câu chuyện, Nói chuyện</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>45</td>
+                            <td>
+                                <div @click="showDialog('44', '女', '', '', './images/kanjiStrokeOrder/woman.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">女</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>jo<p>ジョ</p></a></td>
+                            <td>onnna, me<p>おんな、 め</p></a></td>
+                            <td>Con gái, Phụ nữ</td>
+                        </tr>
+                        <tr>
+                            <td>46</td>
+                            <td>
+                                <div @click="showDialog('45', '北', '', '', './images/kanjiStrokeOrder/north.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">北</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>hoku<p>ホク</p></a></td>
+                            <td>kita<p>きた</p></a></td>
+                            <td>Phía Bắc</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>47</td>
+                            <td>
+                                <div @click="showDialog('46', '午', '', '', './images/kanjiStrokeOrder/noon.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">午</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>go<p>ゴ</p></a></td>
+                            <td>uma<p>うま</p></a></td>
+                            <td>Buổi trưa, Dấu hiệu của con ngựa</td>
+                        </tr>
+                        <tr>
+                            <td>48</td>
+                            <td>
+                                <div @click="showDialog('47', '百', '', '', './images/kanjiStrokeOrder/hundred.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">百</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>hyaku, byaku<p>ヒャク、 ビャク</p></a></td>
+                            <td>momo<p>もも</p></a></td>
+                            <td>Trăm(100)</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>49</td>
+                            <td>
+                                <div @click="showDialog('48', '書', '', '', './images/kanjiStrokeOrder/write.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">書</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>sho<p>ショ</p></a></td>
+                            <td>kaku<p>か(く)</p></a></td>
+                            <td>Viết</td>
+                        </tr>
+                        <tr>
+                            <td>50</td>
+                            <td>
+                                <div @click="showDialog('49', '先', '', '', './images/kanjiStrokeOrder/ahead.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">先</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>sen<p>セン</p></a></td>
+                            <td>saki, ma(zu)<p>さき、 ま(ず)</p></a></td>
+                            <td>Trước, Phía trước, Đằng trước, Tương lai, Ưu tiên trước</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>51</td>
+                            <td>
+                                <div @click="showDialog('50', '名', '', '', './images/kanjiStrokeOrder/name.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">名</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>mei, myou<p>メイ、 ミョウ</p></a></td>
+                            <td>na<p>な</p></a></td>
+                            <td>Tên, Lưu ý, Nổi bật, Danh tiếng</td>
+                        </tr>
+                        <tr>
+                            <td>52</td>
+                            <td>
+                                <div @click="showDialog('51', '川', '', '', './images/kanjiStrokeOrder/river.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">川</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>sen<p>セン</p></a></td>
+                            <td>kawa<p>かわ</p></a></td>
+                            <td>Sông, Dòng chảy</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>53</td>
+                            <td>
+                                <div @click="showDialog('52', '千', '', '', './images/kanjiStrokeOrder/thousand.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">千</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>sen<p>セン</p></a></td>
+                            <td>chi<p>ち</p></a></td>
+                            <td>Nghìn(1000)</td>
+                        </tr>
+                        <tr>
+                            <td>54</td>
+                            <td>
+                                <div @click="showDialog('53', '水', '', '', './images/kanjiStrokeOrder/water.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">水</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>sui<p>スイ</p></a></td>
+                            <td>mizu<p>みず</p></a></td>
+                            <td>Nước</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>55</td>
+                            <td>
+                                <div @click="showDialog('54', '半', '', '', './images/kanjiStrokeOrder/half.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">半</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>han<p>ハン</p></a></td>
+                            <td>naka(ba)<p>なか(ば)</p></a></td>
+                            <td>Một nửa, Ở giữa, Số lẻ, Nửa</td>
+                        </tr>
+                        <tr>
+                            <td>56</td>
+                            <td>
+                                <div @click="showDialog('55', '男', '', '', './images/kanjiStrokeOrder/male.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">男</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>dan, nan<p>ダン、 ナン</p></a></td>
+                            <td>otoko, o<p>おとこ、 お</p></a></td>
+                            <td>Con trai, Đàn ông</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>57</td>
+                            <td>
+                                <div @click="showDialog('56', '西', '', '', './images/kanjiStrokeOrder/west.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">西</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>sei, sai<p>セイ、 サイ</p></a></td>
+                            <td>nishi<p>にし</p></a></td>
+                            <td>Phía Tây</td>
+                        </tr>
+                        <tr>
+                            <td>58</td>
+                            <td>
+                                <div @click="showDialog('57', '電', '', '', './images/kanjiStrokeOrder/electricity.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">電</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>den<p>デン</p></a></td>
+                            <td> <p></p></a>=</td>
+                            <td>Điện, Chạy bằng điện</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>59</td>
+                            <td>
+                                <div @click="showDialog('58', '校', '', '', './images/kanjiStrokeOrder/school.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">校</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>kou<p>コウ</p></a></td>
+                            <td><p></p></a> </td>
+                            <td>Trường học, Kì thi</td>
+                        </tr>
+                        <tr>
+                            <td>60</td>
+                            <td>
+                                <div @click="showDialog('59', '語', '', '', './images/kanjiStrokeOrder/word.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">語</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>go<p>ゴ</p></a></td>
+                            <td>kata(ru)<p>かた(る)</p></a></td>
+                            <td>Từ, Lời nói, Ngôn ngữ</td>
+                        </tr>
+                        <tr class="mdui-color-blue">
+                            <td colspan="5"></td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>61</td>
+                            <td>
+                                <div @click="showDialog('60', '土', '', '', './images/kanjiStrokeOrder/soil.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">土</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>do, to<p>ド、 ト</p></a></td>
+                            <td>tsuchi<p>つち</p></a></td>
+                            <td>Đất, Trái Đất, Mặt đất</td>
+                        </tr>
+                        <tr>
+                            <td>62</td>
+                            <td>
+                                <div @click="showDialog('61', '木', '', '', './images/kanjiStrokeOrder/tree.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">木</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>boku, moku<p>ボク、 モク</p></a></td>
+                            <td>ki, ko<p>き、 こ-</p></a></td>
+                            <td>Cây, Gỗ</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>63</td>
+                            <td>
+                                <div @click="showDialog('62', '聞', '', '', './images/kanjiStrokeOrder/to hear.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">聞</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>bun, mon<p>ブン、 モン</p></a></td>
+                            <td>ki(ku)<p>き(く)</p></a></td>
+                            <td>Nghe, Hỏi</td>
+                        </tr>
+                        <tr>
+                            <td>64</td>
+                            <td>
+                                <div @click="showDialog('63', '食', '', '', './images/kanjiStrokeOrder/eat.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">食</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>shoku, jiki<p>ショク、 ジキ</p></a></td>
+                            <td>k(u), ta(beru), ha(mu)<p>く(う)、 た(べる)、 は(む)</p></a></td>
+                            <td>Ăn, Đồ ăn</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>65</td>
+                            <td>
+                                <div @click="showDialog('64', '車', '', '', './images/kanjiStrokeOrder/car.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">車</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>sha<p>シャ</p></a></td>
+                            <td>kuruma<p>くるま</p></a></td>
+                            <td>Xe, Bánh xe</td>
+                        </tr>
+                        <tr>
+                            <td>66</td>
+                            <td>
+                                <div @click="showDialog('65', '何', '', '', './images/kanjiStrokeOrder/what.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">何</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>ka<p>カ</p></a></td>
+                            <td>nani, nan<p>なに、 なん</p></a></td>
+                            <td>Cái gì ?</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>67</td>
+                            <td>
+                                <div @click="showDialog('66', '南', '', '', './images/kanjiStrokeOrder/south.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">南</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>nan, na<p>ナン、 ナ</p></a></td>
+                            <td>minami<p>みなみ</p></a></td>
+                            <td>Phía Nam</td>
+                        </tr>
+                        <tr>
+                            <td>68</td>
+                            <td>
+                                <div @click="showDialog('67', '万', '', '', './images/kanjiStrokeOrder/ten thousand.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">万</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>man, ban<p>マン、 バン</p></a></td>
+                            <td><p></p></a></td>
+                            <td>Mười nghìn(10000)</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>69</td>
+                            <td>
+                                <div @click="showDialog('68', '毎', '', '', './images/kanjiStrokeOrder/every.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">毎</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>mai<p>マイ</p></a></td>
+                            <td>goto(ni)<p>ごと(に)</p></a></td>
+                            <td>Mỗi</td>
+                        </tr>
+                        <tr>
+                            <td>70</td>
+                            <td>
+                                <div @click="showDialog('69', '白', '', '', './images/kanjiStrokeOrder/white.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">白</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>haku, byaku<p>ハク、 ビャク</p></a></td>
+                            <td>shiro(i)<p>しろ(い)</p></a></td>
+                            <td>Trắng</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>71</td>
+                            <td>
+                                <div @click="showDialog('70', '天', '', '', './images/kanjiStrokeOrder/sky.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">天</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>ten<p>テン</p></a></td>
+                            <td>amatsu<p>あまつ</p></a></td>
+                            <td>Thiên đường, Bầu trời, Đế quốc, Hoàng gia</td>
+                        </tr>
+                        <tr>
+                            <td>72</td>
+                            <td>
+                                <div @click="showDialog('71', '母', '', '', './images/kanjiStrokeOrder/mother.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">母</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>bo<p>ボ</p></a></td>
+                            <td>haha, kaa<p>はは、 かあ</p></a></td>
+                            <td>Mẹ</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>73</td>
+                            <td>
+                                <div @click="showDialog('72', '火', '', '', './images/kanjiStrokeOrder/fire.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">火</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>ka<p>カ</p></a></td>
+                            <td>hi, bi, ho<p>ひ、 -び、 ほ-</p></a></td>
+                            <td>Lửa</td>
+                        </tr>
+                        <tr>
+                            <td>74</td>
+                            <td>
+                                <div @click="showDialog('73', '右', '', '', './images/kanjiStrokeOrder/right.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">右</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>u, yuu<p>ウ、 ユウ</p></a></td>
+                            <td>>migi<p>みぎ</p></a></td>
+                            <td>Bên phải</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>75</td>
+                            <td>
+                                <div @click="showDialog('74', '読', '', '', './images/kanjiStrokeOrder/to read.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">読</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>doku, toku, tou<p>ドク、 トク、トウ</p></a></td>
+                            <td>yo(mu)<p>よ(む)</p></a></td>
+                            <td>Đọc</td>
+                        </tr>
+                        <tr>
+                            <td>76</td>
+                            <td>
+                                <div @click="showDialog('75', '友', '', '', './images/kanjiStrokeOrder/friend.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">友</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>yuu<p>ユウ</p></a></td>
+                            <td>tomo<p>とも</p></a></td>
+                            <td>Bạn bè</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>77</td>
+                            <td>
+                                <div @click="showDialog('76', '左', '', '', './images/kanjiStrokeOrder/left.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">左</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>sa, sha<p>サ、 シャ</p></a></td>
+                            <td>hidari<p>ひだり</p></a></td>
+                            <td>Bên trái</td>
+                        </tr>
+                        <tr>
+                            <td>78</td>
+                            <td>
+                                <div @click="showDialog('77', '休', '', '', './images/kanjiStrokeOrder/rest.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">休</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>kyuu<p>キュウ</p></a></td>
+                            <td>yasu(mu)<p>やす(む)</p></a></td>
+                            <td>Nghỉ ngơi, Ngày nghỉ, Nghỉ hưu, Ngủ</td>
+                        </tr>
+                        <tr class="mdui-table-row-selected">
+                            <td>79</td>
+                            <td>
+                                <div @click="showDialog('78', '父', '', '', './images/kanjiStrokeOrder/father.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">父</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>fu<p>フ</p></a></td>
+                            <td>chichi, tou<p>ちち、 とう</p></a></td>
+                            <td>Cha</td>
+                        </tr>
+                        <tr>
+                            <td>80</td>
+                            <td>
+                                <div @click="showDialog('79', '雨', '', '', './images/kanjiStrokeOrder/rain.PNG','')"
+                                    mdui-dialog="{target: '#showWord'}" class="mdui-card-media mdui-ripple">
+                                    <div class="text">
+                                        <svg viewbox="0 -260 300 300" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <text font-size="300" fill="#757575">雨</text>
+                                        </svg>
+                                    </div>
+                                    <div class="line"></div>
+                                </div></a>
+                            </td>
+                            <td>u<p>ウ</p></a></td>
+                            <td>ame, ama<p>あめ、 あま</p></a></td>
+                            <td>Mưa</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </main>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/home.js"></script>
+
+</body>
+
+</html>
